@@ -1,9 +1,7 @@
 
 package Main;
 
-import Heizungsobjekt.Pumpe;
-import Heizungsobjekt.Termometer;
-import java.io.IOException;
+import Heizungsobjekt.*;
 
 /**
  *

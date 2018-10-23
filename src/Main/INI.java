@@ -3,13 +3,14 @@ package Main;
 
 import java.io.*;
 import java.util.Properties;
-import Main.Logger;
+import Main.*;
 
 public class INI {
     private static int AnschaltTemperatur = 65;
     private static int AusschaltTemperatur = 60;
     private static int log = 2;
     private static String LogPath = "/home/pi/Documents/LUMA/log.xls";
+    private static long Sleep = 600000;
     
     public static void initINI() {
         try {
@@ -19,6 +20,7 @@ public class INI {
             AusschaltTemperatur = Integer.parseInt(p.getProperty("AusTemp"));
             log = Integer.parseInt(p.getProperty("LogLevel"));
             LogPath = p.getProperty("LogPath");
+            Sleep = Long.parseLong(p.getProperty("Sleep")) * 60000;
         } catch (IOException ex) {
             Logger.ErrorLog("INI", "INI-Datei fehlt");
         }
@@ -35,10 +37,13 @@ public class INI {
     public static int getAusTemp() {
         return AusschaltTemperatur;
     }
-    public static int LogPrio() {
+    public static int getLogPrio() {
         //0 = Log
         //2 = Action
         //4 = Error
         return log;
+    }
+    public static long getSleep() {
+        return Sleep;
     }
 }

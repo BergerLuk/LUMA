@@ -2,6 +2,7 @@ package Main;
 
 import Heizungsobjekt.*;
 import java.io.IOException;
+import java.util.logging.Level;
 
 public class Manager {
 
@@ -10,26 +11,22 @@ public class Manager {
         Logger.log(0);
         Heizungsobjekt.INIT();
         INI.initINI();
-        
 
         while (true) {
             if (!Knopf.getKnopfAn()) {
                 PumpeAnschaltTest();
                 PumpeAusschaltTest();
-                if ((i % 60) == 0) {
-                    Logger.log(1);
-                }
-
+                Logger.log(1);
                 KnopfAnTest();
             } else if (Knopf.getKnopfAn()) {
-                if ((i % 80) == 0) {
-                    Logger.log(1);
-                }
+                Logger.log(1);
                 KnopfAusTest();
-
             }
-            i++;
-
+            try {
+                Thread.sleep(INI.getSleep());
+            } catch (InterruptedException ex) {
+                Logger.ErrorLog("Manager", "sleep failed");
+            }
         }
     }
 
@@ -47,7 +44,7 @@ public class Manager {
         }
     }
 
-    private static void KnopfAnTest(){
+    private static void KnopfAnTest() {
         if (Knopf.Knopfan()) {
             Pumpe.anschalten();
             System.out.println("Knopf Pumpe an");

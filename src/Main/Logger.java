@@ -1,7 +1,6 @@
 package Main;
 
-import Heizungsobjekt.Pumpe;
-import Heizungsobjekt.Termometer;
+import Heizungsobjekt.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,12 +18,12 @@ public class Logger {
 
             if ((i == 0)) {
                 writer.append("\nNew Log\nStatus;Datum;Uhrzeit;Einheit;Daten;\n");
-            } else if ((i == 1) && (INI.LogPrio() <= i)) {
+            } else if ((i == 1) && (INI.getLogPrio() <= i)) {
                 writer.append("LOG;" + uhrzeit + ";Pumpe;" + Pumpe.getIstAn() + ";\n");
                 writer.append("LOG;" + uhrzeit + ";Termometer1;" + Termometer.getTemperatur() + ";\n");
-            } else if ((i == 2) && (INI.LogPrio() <= i)) {
+            } else if ((i == 2) && (INI.getLogPrio() <= i)) {
                 writer.append("LOG;" + uhrzeit + ";Pumpe;Angeschaltet;\n");
-            } else if ((i == 3) && (INI.LogPrio() <= i)) {
+            } else if ((i == 3) && (INI.getLogPrio() <= i)) {
                 writer.append("LOG;" + uhrzeit + ";Pumpe;Ausgeschaltet;\n");
             }
             writer.close();
