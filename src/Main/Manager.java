@@ -1,8 +1,6 @@
 package Main;
 
 import Heizungsobjekt.*;
-import java.io.IOException;
-import java.util.logging.Level;
 
 public class Manager {
 
