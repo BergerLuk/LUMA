@@ -7,15 +7,12 @@ package Heizungsobjekt;
 
 import java.io.*;
 import Main.*;
-import java.util.logging.Level;
 
 /**
  *
  * @author Lukas
  */
 public class Termometer extends Heizungsobjekt {
-    
-    static String Kennung = "28-05170013b3ff";
     
     private static int Temperatur;
     
@@ -24,7 +21,7 @@ public class Termometer extends Heizungsobjekt {
 
         try {
             FileReader fr;
-            fr = new FileReader("/sys/bus/w1/devices/" + Kennung + "/w1_slave");
+            fr = new FileReader(INI.getThermoPath());
             BufferedReader br = new BufferedReader(fr);
             
             String zeile1 = br.readLine();
@@ -36,7 +33,7 @@ public class Termometer extends Heizungsobjekt {
             
             return Temperatur;
         } catch (IOException ex) {
-            Logger.ErrorLog("Termometer" + Kennung, "Temperaturdatei fehlt");
+            Logger.ErrorLog("Termometer", "Temperaturdatei fehlt");
             return 30;
         }
     }

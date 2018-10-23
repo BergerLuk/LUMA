@@ -1,3 +1,3 @@
-f = open("Knopfdruck.txt", "w")
+f = open("/home/pi/NetBeansProjects/LUMA/PythonScripts/KnopfDruck.txt", "w")
 f.write("0")
 f.close()

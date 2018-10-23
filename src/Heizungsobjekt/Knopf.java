@@ -20,7 +20,7 @@ public class Knopf extends Heizungsobjekt {
         int k = 0;
         String Knopf = "0";
         try {
-        FileReader fr = new FileReader("/home/pi/NetBeansProjects/LUMA/PythonScripts/KnopfDruck.txt");
+        FileReader fr = new FileReader(INI.getKnopfDruckPath());
         BufferedReader br = new BufferedReader(fr);
         Knopf = br.readLine();
         br.close();

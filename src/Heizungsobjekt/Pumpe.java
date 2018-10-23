@@ -23,7 +23,7 @@ public class Pumpe extends Heizungsobjekt{
     
     public static void anschalten() {
         try {
-            Process p = Runtime.getRuntime().exec("python /home/pi/NetBeansProjects/LUMA/PythonScripts/An.py");
+            Process p = Runtime.getRuntime().exec("python " + INI.getPumpeAnPath());
         } catch (IOException ex) {
             Logger.ErrorLog("Pumpe", "An.py fehlt");
         }
@@ -33,7 +33,7 @@ public class Pumpe extends Heizungsobjekt{
     
     public static void ausschalten() {
         try {
-            Process p = Runtime.getRuntime().exec("python /home/pi/NetBeansProjects/LUMA/PythonScripts/Aus.py");
+            Process p = Runtime.getRuntime().exec("python " + INI.getPumpeAusPath());
         } catch (IOException ex) {
             Logger.ErrorLog("Pumpe", "Aus.py fehlt");
         }

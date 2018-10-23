@@ -11,6 +11,11 @@ public class INI {
     private static int log = 2;
     private static String LogPath = "/home/pi/Documents/LUMA/log.xls";
     private static long Sleep = 600000;
+    private static String PumpeInit = "/home/pi/NetBeansProjects/LUMA/PythonScripts/SchalterReset.py";
+    private static String TermoPath = "/sys/bus/w1/devices/28-05170013b3ff/w1_slave";
+    private static String PumpeAusPath = "/home/pi/NetBeansProjects/LUMA/PythonScripts/Aus.py";
+    private static String PumpeAnPath = "/home/pi/NetBeansProjects/LUMA/PythonScripts/An.py";
+    private static String KnopfDruckPath = "/home/pi/NetBeansProjects/LUMA/PythonScripts/KnopfDruck.txt";
     
     public static void initINI() {
         try {
@@ -21,6 +26,11 @@ public class INI {
             log = Integer.parseInt(p.getProperty("LogLevel"));
             LogPath = p.getProperty("LogPath");
             Sleep = Long.parseLong(p.getProperty("Sleep")) * 1000;
+            PumpeInit = p.getProperty("PumpeInit");
+            TermoPath = p.getProperty("ThermoPath");
+            PumpeAusPath = p.getProperty("PumpeAusPath");
+            PumpeAnPath = p.getProperty("PumpeAnPath");
+            KnopfDruckPath = p.getProperty("KnopfDruckPath");
         } catch (IOException ex) {
             Logger.ErrorLog("INI", "INI-Datei fehlt");
         }
@@ -30,6 +40,18 @@ public class INI {
     
     public static String getLogPath() {
         return LogPath;
+    }
+    public static String getPumpeAusPath() {
+        return PumpeAusPath;
+    }
+    public static String getKnopfDruckPath() {
+        return KnopfDruckPath;
+    }
+    public static String getPumpeAnPath() {
+        return PumpeAnPath;
+    }
+    public static String getThermoPath() {
+        return TermoPath;
     }
     public static int getAnTemp() {
         return AnschaltTemperatur;
@@ -45,5 +67,8 @@ public class INI {
     }
     public static long getSleep() {
         return Sleep;
+    }
+    public static String getPumpeInit() {
+        return PumpeInit;
     }
 }

@@ -8,7 +8,7 @@ i = True
 def button_callback(channel):
     global i
     if i:
-        f = open("KnopfDruck.txt", "w")
+        f = open("/home/pi/NetBeansProjects/LUMA/PythonScripts/KnopfDruck.txt", "w")
         f.write("1")
         f.close()
         i = False
@@ -17,7 +17,7 @@ def button_callback(channel):
         print("rdy")
         
     elif not i:
-        f = open("KnopfDruck.txt", "w")
+        f = open("/home/pi/NetBeansProjects/LUMA/PythonScripts/KnopfDruck.txt", "w")
         f.write("0")
         f.close()
         i = True

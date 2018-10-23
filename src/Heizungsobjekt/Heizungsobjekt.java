@@ -17,7 +17,8 @@ public class Heizungsobjekt {
         Pumpe.ausschalten();
         System.out.println("Reset Pumpe");
         try {
-            Process p = Runtime.getRuntime().exec("python /home/pi/NetBeansProjects/LUMA/PythonScripts/SchalterReset.py");
+            Process p = Runtime.getRuntime().exec("python " + INI.getPumpeInit());
+            System.out.println("Init Pumpe");
         } catch (IOException ex) {
             Logger.ErrorLog("Heizungsobjekte", "SchalterReset.py fehlt");
         }
