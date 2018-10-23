@@ -1,7 +1,6 @@
 package Main;
 
-import Heizungsobjekt.Pumpe;
-import Heizungsobjekt.Termometer;
+import Heizungsobjekt.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;

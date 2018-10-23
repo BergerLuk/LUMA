@@ -3,7 +3,7 @@ package Main;
 
 import java.io.*;
 import java.util.Properties;
-import Main.Logger;
+import Main.*;
 
 public class INI {
     private static int AnschaltTemperatur = 65;

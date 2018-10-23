@@ -5,7 +5,7 @@
  */
 package Heizungsobjekt;
 
-import Main.Logger;
+import Main.*;
 import java.io.*;
 import java.util.logging.Level;
 

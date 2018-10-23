@@ -18,6 +18,7 @@ public class Termometer extends Heizungsobjekt {
     static String Kennung = "28-05170013b3ff";
     
     private static int Temperatur;
+    
 
     public static int getTemperatur() {
 
