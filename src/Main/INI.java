@@ -20,7 +20,7 @@ public class INI {
             AusschaltTemperatur = Integer.parseInt(p.getProperty("AusTemp"));
             log = Integer.parseInt(p.getProperty("LogLevel"));
             LogPath = p.getProperty("LogPath");
-            Sleep = Long.parseLong(p.getProperty("Sleep")) * 60000;
+            Sleep = Long.parseLong(p.getProperty("Sleep")) * 1000;
         } catch (IOException ex) {
             Logger.ErrorLog("INI", "INI-Datei fehlt");
         }

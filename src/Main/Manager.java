@@ -27,6 +27,7 @@ public class Manager {
             } catch (InterruptedException ex) {
                 Logger.ErrorLog("Manager", "sleep failed");
             }
+            System.out.println("new test");
         }
     }
 
