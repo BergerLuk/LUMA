@@ -31,28 +31,28 @@ public class Manager {
 
     private static void PumpeAnschaltTest() {
         if (!Pumpe.getIstAn() && (Termometer.getTemperatur() >= INI.getAnTemp())) {
-            Pumpe.anschalten();
+            Pumpe.anschalten(0);
             System.out.println("Manger Pumpe an");
         }
     }
 
     private static void PumpeAusschaltTest() {
         if (Pumpe.getIstAn() && (Termometer.getTemperatur() <= INI.getAusTemp())) {
-            Pumpe.ausschalten();
+            Pumpe.ausschalten(0);
             System.out.println("Manager Pumpe aus");
         }
     }
 
     private static void KnopfAnTest() {
         if (Knopf.Knopfan()) {
-            Pumpe.anschalten();
+            Pumpe.anschalten(1);
             System.out.println("Knopf Pumpe an");
         }
     }
 
     private static void KnopfAusTest() {
         if (!Knopf.Knopfan()) {
-            Pumpe.ausschalten();
+            Pumpe.ausschalten(1);
             System.out.println("Knopf Pumpe aus");
         }
     }

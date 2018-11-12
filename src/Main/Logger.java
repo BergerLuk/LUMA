@@ -25,6 +25,10 @@ public class Logger {
                 writer.append("LOG;" + uhrzeit + ";Pumpe;Angeschaltet;\n");
             } else if ((i == 3) && (INI.getLogPrio() <= i)) {
                 writer.append("LOG;" + uhrzeit + ";Pumpe;Ausgeschaltet;\n");
+            } else if ((i == 4) && (INI.getLogPrio() <= i)) {
+                writer.append("LOG;" + uhrzeit + ";Pumpe;AngeschaltetKnopf;\n");
+            } else if ((i == 5) && (INI.getLogPrio() <= i)) {
+                writer.append("LOG;" + uhrzeit + ";Pumpe;AusgeschaltetKnopf;\n");
             }
             writer.close();
         } catch (IOException ex) {

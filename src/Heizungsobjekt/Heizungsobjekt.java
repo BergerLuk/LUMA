@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class Heizungsobjekt {
     public static void INIT() {
-        Pumpe.ausschalten();
+        Pumpe.ausschalten(0);
         System.out.println("Reset Pumpe");
         try {
             Process p = Runtime.getRuntime().exec("python " + INI.getPumpeInit());

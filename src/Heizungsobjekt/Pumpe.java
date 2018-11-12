@@ -21,23 +21,31 @@ public class Pumpe extends Heizungsobjekt{
         return istAn;
     }
     
-    public static void anschalten() {
+    public static void anschalten(int i) {
         try {
             Process p = Runtime.getRuntime().exec("python " + INI.getPumpeAnPath());
         } catch (IOException ex) {
             Logger.ErrorLog("Pumpe", "An.py fehlt");
         }
         istAn = true;
-        Logger.log(2);
+                
+        if(i == 0)
+            Logger.log(2);
+        else
+            Logger.log(4);
     }
     
-    public static void ausschalten() {
+    public static void ausschalten(int i) {
         try {
             Process p = Runtime.getRuntime().exec("python " + INI.getPumpeAusPath());
         } catch (IOException ex) {
             Logger.ErrorLog("Pumpe", "Aus.py fehlt");
         }
         istAn = false;
-        Logger.log(3);
+        
+        if(i == 0)
+            Logger.log(3);
+        else
+            Logger.log(5);
     }
 }
