@@ -6,7 +6,7 @@ public class Manager {
 
     public static void Steuerung() {
         int i = 0;
-        Logger.log(0);
+        Logger.log(0, null, null);
         Heizungsobjekt.INIT();
         INI.initINI();
 
@@ -14,10 +14,12 @@ public class Manager {
             if (!Knopf.getKnopfAn()) {
                 PumpeAnschaltTest();
                 PumpeAusschaltTest();
-                Logger.log(1);
+                Logger.log(1, "Pumpe", String.valueOf(Pumpe.getIstAn()));
+                Logger.log(1, "Termometer1", String.valueOf(Termometer.getTemperatur()));
                 KnopfAnTest();
             } else if (Knopf.getKnopfAn()) {
-                Logger.log(1);
+                Logger.log(1, "Pumpe", String.valueOf(Pumpe.getIstAn()));
+                Logger.log(1, "Termometer1", String.valueOf(Termometer.getTemperatur()));
                 KnopfAusTest();
             }
             try {

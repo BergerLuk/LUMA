@@ -11,9 +11,10 @@ t =1
 def button_callback(channel):
     global i
     global t
+    filepath = "/home/pi/NetBeansProjects/LUMA/PythonScripts/KnopfDruck.txt"
     if GPIO.input(24) == 1:
         if i:
-            f = open("/home/pi/NetBeansProjects/LUMA/PythonScripts/KnopfDruck.txt", "w")
+            f = open(filepath , "w")
             f.write("1")
             f.close()
             i = False
@@ -21,7 +22,7 @@ def button_callback(channel):
             time.sleep(t)
             
         elif not i:
-            f = open("/home/pi/NetBeansProjects/LUMA/PythonScripts/KnopfDruck.txt", "w")
+            f = open(filepath , "w")
             f.write("0")
             f.close()
             i = True

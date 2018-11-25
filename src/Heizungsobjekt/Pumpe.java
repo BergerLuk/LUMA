@@ -30,9 +30,9 @@ public class Pumpe extends Heizungsobjekt{
         istAn = true;
                 
         if(i == 0)
-            Logger.log(2);
+            Logger.log(2, "Pumpe", "Angeschaltet");
         else
-            Logger.log(4);
+            Logger.log(2, "Pumpe", "AngeschaltetKnopf");
     }
     
     public static void ausschalten(int i) {
@@ -44,8 +44,8 @@ public class Pumpe extends Heizungsobjekt{
         istAn = false;
         
         if(i == 0)
-            Logger.log(3);
+            Logger.log(2, "Pumpe", "Ausgeschaltet");
         else
-            Logger.log(5);
+            Logger.log(2, "Pumpe", "AusgeschaltetKnopf");
     }
 }

@@ -11,24 +11,15 @@ public class Logger {
     static SimpleDateFormat date = new SimpleDateFormat("yyyy.MM.dd;HH:mm");
     static String uhrzeit = date.format(new Date());
 
-    public static void log(int i) {
+    public static void log(int i, String Gerät, String Status) {
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(INI.getLogPath(), true));
 
             if ((i == 0)) {
                 writer.append("\nNew Log\nStatus;Datum;Uhrzeit;Einheit;Daten;\n");
-            } else if ((i == 1) && (INI.getLogPrio() <= i)) {
-                writer.append("LOG;" + uhrzeit + ";Pumpe;" + Pumpe.getIstAn() + ";\n");
-                writer.append("LOG;" + uhrzeit + ";Termometer1;" + Termometer.getTemperatur() + ";\n");
-            } else if ((i == 2) && (INI.getLogPrio() <= i)) {
-                writer.append("LOG;" + uhrzeit + ";Pumpe;Angeschaltet;\n");
-            } else if ((i == 3) && (INI.getLogPrio() <= i)) {
-                writer.append("LOG;" + uhrzeit + ";Pumpe;Ausgeschaltet;\n");
-            } else if ((i == 4) && (INI.getLogPrio() <= i)) {
-                writer.append("LOG;" + uhrzeit + ";Pumpe;AngeschaltetKnopf;\n");
-            } else if ((i == 5) && (INI.getLogPrio() <= i)) {
-                writer.append("LOG;" + uhrzeit + ";Pumpe;AusgeschaltetKnopf;\n");
+            } else if (INI.getLogPrio() <= i) {
+                writer.append("LOG; " + uhrzeit + ";" + Gerät + ";" + Status + ";\n");
             }
             writer.close();
         } catch (IOException ex) {
