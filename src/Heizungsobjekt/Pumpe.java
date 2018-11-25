@@ -28,7 +28,10 @@ public class Pumpe extends Heizungsobjekt{
             Logger.ErrorLog("Pumpe", "An.py fehlt");
         }
         istAn = true;
-                
+        
+        if (GUI.Uebersicht.istda)
+            GUI.Uebersicht.editText("Pumpe ist An");
+        
         if(i == 0)
             Logger.log(2, "Pumpe", "Angeschaltet");
         else
@@ -42,6 +45,9 @@ public class Pumpe extends Heizungsobjekt{
             Logger.ErrorLog("Pumpe", "Aus.py fehlt");
         }
         istAn = false;
+        
+        if (GUI.Uebersicht.istda)
+            GUI.Uebersicht.editText("Pumpe ist Aus");
         
         if(i == 0)
             Logger.log(2, "Pumpe", "Ausgeschaltet");
