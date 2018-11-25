@@ -50,7 +50,7 @@ public class INI {
     public static String getPumpeAnPath() {
         return PumpeAnPath;
     }
-    public static String getThermoPath() {
+    public static String getTermoPath() {
         return TermoPath;
     }
     public static int getAnTemp() {

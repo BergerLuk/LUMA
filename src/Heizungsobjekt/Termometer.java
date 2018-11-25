@@ -15,13 +15,24 @@ import Main.*;
 public class Termometer extends Heizungsobjekt {
     
     private static int Temperatur;
+    public static String Termopath = INI.getTermoPath();
+    private String Name;
     
-
-    public static int getTemperatur() {
-
+    public Termometer(String Endung, String Name) {
+        this.Termopath = (Termopath + Endung + "/w1_slave");
+        this.Name = Name;
+    }
+    
+    @Override
+    public String toString() {
+        return Name;
+    }
+       
+    public int getTemperatur() {
+        
         try {
             FileReader fr;
-            fr = new FileReader(INI.getThermoPath());
+            fr = new FileReader(this.Termopath);
             BufferedReader br = new BufferedReader(fr);
             
             String zeile1 = br.readLine();

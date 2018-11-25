@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package GUI;
-
+import Main.*;
 /**
  *
  * @author root
@@ -105,8 +105,8 @@ public class Uebersicht extends javax.swing.JFrame {
                 new Uebersicht().setVisible(true);
             }
         });
-        
-        Main.Manager.Steuerung();
+        Manager M = new Manager();
+        M.Steuerung();
     }
     
     public static void editText (String newText) {
