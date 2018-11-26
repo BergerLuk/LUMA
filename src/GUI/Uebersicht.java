@@ -5,13 +5,29 @@
  */
 package GUI;
 import Main.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 /**
  *
  * @author root
  */
 public class Uebersicht extends javax.swing.JFrame {
     
+    private static JTextField jTextField2 = new JTextField();
+    private static JTextField jTextField3 = new JTextField();
+    private static JTextField jTextField4 = new JTextField();
+    private static JTextField jTextField5 = new JTextField();
+    private static JTextField jTextField6 = new JTextField();
+    private static JTextField jTextField7 = new JTextField();
+    private static JTextField jTextField8 = new JTextField();
+    private static JTextField jTextField9 = new JTextField();
+    private static JTextField jTextField10 = new JTextField();
+    static JTextField[] Log = {jTextField2,jTextField3,jTextField4,jTextField5,jTextField6,jTextField7,jTextField8,jTextField9,jTextField10};
     public static boolean istda = false;
+    private static JButton AnAusKnopf = new JButton();
 
     /**
      * Creates new form Uebersicht
@@ -25,19 +41,24 @@ public class Uebersicht extends javax.swing.JFrame {
         
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        jScrollBar1 = new javax.swing.JScrollBar();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.FlowLayout());
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));
 
         jTextField1.setText("Pumpe ist Aus  ");
+        jTextField1.setBackground(Color.red);
+        jTextField1.setFont(new Font("Dialog", Font.BOLD, 20));
         jTextField1.setEditable(false);
         jPanel1.add(jTextField1);
-
+        AnAusKnopf.addActionListener(UK);
+        
+        for (JTextField i : Log) {
+            jPanel1.add(i);
+        }
         getContentPane().add(jPanel1);
-        getContentPane().add(jScrollBar1);
+        getContentPane().add(AnAusKnopf);
 
         pack();
         
@@ -109,9 +130,37 @@ public class Uebersicht extends javax.swing.JFrame {
         M.Steuerung();
     }
     
-    public static void editText (String newText) {
-        jTextField1.setText(newText);
+    public static void PumpeAnUI (int i) {
+        if (i == 0)
+            jTextField1.setText("Pumpe ist An   ");
+        else
+            jTextField1.setText("Pumpe ist An (Knopf)");
+        jTextField1.setBackground(Color.green);
     }
+    public static void PumpeAusUI () {
+
+        jTextField1.setText("Pumpe ist Aus  ");
+        jTextField1.setBackground(Color.red);
+    }
+    public static void newLog (String newLog) {
+        for (javax.swing.JTextField i : Log) {
+            String oldText = i.getText();
+            i.setText(newLog);
+            newLog = oldText;
+        }
+        
+    }
+    
+    private class UIKnopf implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(Heizungsobjekt.Pumpe.getIstAn())
+                Heizungsobjekt.Pumpe.ausschalten(1);
+            else
+                Heizungsobjekt.Pumpe.anschalten(1);
+        }
+    }
+    UIKnopf UK = new UIKnopf();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JPanel jPanel1;

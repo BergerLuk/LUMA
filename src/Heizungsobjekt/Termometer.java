@@ -15,11 +15,11 @@ import Main.*;
 public class Termometer extends Heizungsobjekt {
     
     private static int Temperatur;
-    public static String Termopath = INI.getTermoPath();
+    public String Termopath;
     private String Name;
     
     public Termometer(String Endung, String Name) {
-        this.Termopath = (Termopath + Endung + "/w1_slave");
+        this.Termopath = (INI.getTermoPath() + Endung + "/w1_slave");
         this.Name = Name;
     }
     

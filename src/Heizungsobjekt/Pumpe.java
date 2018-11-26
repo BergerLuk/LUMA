@@ -13,14 +13,14 @@ import java.util.logging.Level;
  *
  * @author Lukas
  */
-public class Pumpe extends Heizungsobjekt{
-    
+public class Pumpe extends Heizungsobjekt {
+
     private static boolean istAn = false;
-    
+
     public static boolean getIstAn() {
         return istAn;
     }
-    
+
     public static void anschalten(int i) {
         try {
             Process p = Runtime.getRuntime().exec("python " + INI.getPumpeAnPath());
@@ -28,16 +28,16 @@ public class Pumpe extends Heizungsobjekt{
             Logger.ErrorLog("Pumpe", "An.py fehlt");
         }
         istAn = true;
-        
-        if (GUI.Uebersicht.istda)
-            GUI.Uebersicht.editText("Pumpe ist An");
-        
-        if(i == 0)
+
+        if (i == 0) {
             Logger.log(2, "Pumpe", "Angeschaltet");
-        else
+            GUI.Uebersicht.PumpeAnUI(0);
+        } else {
             Logger.log(2, "Pumpe", "AngeschaltetKnopf");
+            GUI.Uebersicht.PumpeAnUI(1);
+        }
     }
-    
+
     public static void ausschalten(int i) {
         try {
             Process p = Runtime.getRuntime().exec("python " + INI.getPumpeAusPath());
@@ -45,13 +45,12 @@ public class Pumpe extends Heizungsobjekt{
             Logger.ErrorLog("Pumpe", "Aus.py fehlt");
         }
         istAn = false;
-        
-        if (GUI.Uebersicht.istda)
-            GUI.Uebersicht.editText("Pumpe ist Aus");
-        
-        if(i == 0)
+        GUI.Uebersicht.PumpeAusUI();
+
+        if (i == 0) {
             Logger.log(2, "Pumpe", "Ausgeschaltet");
-        else
+        } else {
             Logger.log(2, "Pumpe", "AusgeschaltetKnopf");
+        }
     }
 }

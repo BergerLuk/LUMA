@@ -12,7 +12,7 @@ public class INI {
     private static String LogPath = "/home/pi/Documents/LUMA/log.xls";
     private static long Sleep = 600000;
     private static String PumpeInit = "/home/pi/NetBeansProjects/LUMA/PythonScripts/SchalterReset.py";
-    private static String TermoPath = "/sys/bus/w1/devices/28-05170013b3ff/w1_slave";
+    private static String TermoPath = "/sys/bus/w1/devices/";
     private static String PumpeAusPath = "/home/pi/NetBeansProjects/LUMA/PythonScripts/Aus.py";
     private static String PumpeAnPath = "/home/pi/NetBeansProjects/LUMA/PythonScripts/An.py";
     private static String KnopfDruckPath = "/home/pi/NetBeansProjects/LUMA/PythonScripts/KnopfDruck.txt";

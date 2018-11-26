@@ -6,7 +6,7 @@ public class Manager {
 
     Termometer HauptTermo = new Termometer("28-05170013b3ff", "HauptTermo");
     Termometer ZweitTermo = new Termometer("28-04170077ffff", "ZweitTermo");
-    Termometer DrittTermo = new Termometer("28-04170077ffff", "DrittTermo");
+    Termometer DrittTermo = new Termometer("28-051700323fff", "DrittTermo");
     Termometer ViertTermo = new Termometer("28-04170077ffff", "ViertTermo");
     Termometer FuenftTermo = new Termometer("28-04170077ffff", "FuenftTermo");
 
