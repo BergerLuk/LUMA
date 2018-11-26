@@ -45,7 +45,7 @@ public class Termometer extends Heizungsobjekt {
             return Temperatur;
         } catch (IOException ex) {
             Logger.ErrorLog("Termometer", "Temperaturdatei fehlt");
-            return 30;
+            return -20;
         }
     }
 }
