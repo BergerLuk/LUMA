@@ -42,7 +42,7 @@ public class Uebersicht extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.FlowLayout());
 
         jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));
@@ -52,6 +52,7 @@ public class Uebersicht extends javax.swing.JFrame {
         jTextField1.setFont(new Font("Dialog", Font.BOLD, 20));
         jTextField1.setEditable(false);
         jPanel1.add(jTextField1);
+        AnAusKnopf.setText("An/Aus Knopf");
         AnAusKnopf.addActionListener(UK);
         
         for (JTextField i : Log) {
@@ -154,10 +155,7 @@ public class Uebersicht extends javax.swing.JFrame {
     private class UIKnopf implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(Heizungsobjekt.Pumpe.getIstAn())
-                Heizungsobjekt.Pumpe.ausschalten(1);
-            else
-                Heizungsobjekt.Pumpe.anschalten(1);
+            Heizungsobjekt.Knopf.KnopfDruecken();
         }
     }
     UIKnopf UK = new UIKnopf();

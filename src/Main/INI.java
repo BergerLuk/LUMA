@@ -3,19 +3,22 @@ package Main;
 
 import java.io.*;
 import java.util.Properties;
-import Main.*;
 
 public class INI {
+    private static final String SkriptPath = "/home/pi/NetBeansProjects/LUMA/PythonScripts/";
     private static int AnschaltTemperatur = 65;
     private static int AusschaltTemperatur = 60;
     private static int log = 2;
     private static String LogPath = "/home/pi/Documents/LUMA/log.xls";
     private static long Sleep = 600000;
-    private static String PumpeInit = "/home/pi/NetBeansProjects/LUMA/PythonScripts/SchalterReset.py";
+    private static String PumpeInit = SkriptPath + "SchalterReset.py";
     private static String TermoPath = "/sys/bus/w1/devices/";
-    private static String PumpeAusPath = "/home/pi/NetBeansProjects/LUMA/PythonScripts/Aus.py";
-    private static String PumpeAnPath = "/home/pi/NetBeansProjects/LUMA/PythonScripts/An.py";
-    private static String KnopfDruckPath = "/home/pi/NetBeansProjects/LUMA/PythonScripts/KnopfDruck.txt";
+    private static String PumpeAusPath = SkriptPath + "Aus.py";
+    private static String PumpeAnPath = SkriptPath + "An.py";
+    private static String KnopfLampeAusPath = SkriptPath + "KnopfLampeAus.py";
+    private static String KnopfLampeAnPath = SkriptPath + "KnopfLampeAn.py";
+    private static String KnopfDruckPath = SkriptPath + "KnopfDruck.txt";
+    private static String GUISchalterPath = SkriptPath + "GUISchalter.py";
     
     public static void initINI() {
         try {
@@ -31,6 +34,9 @@ public class INI {
             PumpeAusPath = p.getProperty("PumpeAusPath");
             PumpeAnPath = p.getProperty("PumpeAnPath");
             KnopfDruckPath = p.getProperty("KnopfDruckPath");
+            KnopfLampeAusPath = p.getProperty("KnopfLampeAusPath");
+            KnopfLampeAnPath = p.getProperty("KnopfLampeAnPath");
+            GUISchalterPath = p.getProperty("GUISchalterPath");
         } catch (IOException ex) {
             Logger.ErrorLog("INI", "INI-Datei fehlt");
         }
@@ -38,8 +44,17 @@ public class INI {
         
     }
     
+    public static String getGUISchalterPath() {
+        return GUISchalterPath;
+    }
     public static String getLogPath() {
         return LogPath;
+    }
+    public static String getKnopfLampeAnPath() {
+        return KnopfLampeAnPath;
+    }
+    public static String getKnopfLampeAusPath() {
+        return KnopfLampeAusPath;
     }
     public static String getPumpeAusPath() {
         return PumpeAusPath;

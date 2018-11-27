@@ -20,13 +20,12 @@ public class Knopf extends Heizungsobjekt {
         int k = 0;
         String Knopf = "0";
         try {
-        FileReader fr = new FileReader(INI.getKnopfDruckPath());
-        BufferedReader br = new BufferedReader(fr);
-        Knopf = br.readLine();
-        br.close();
-        fr.close();
-        }
-        catch (IOException exc) {
+            FileReader fr = new FileReader(INI.getKnopfDruckPath());
+            BufferedReader br = new BufferedReader(fr);
+            Knopf = br.readLine();
+            br.close();
+            fr.close();
+        } catch (IOException exc) {
             Logger.ErrorLog("Knopf", "KnopfDruck.txt fehlt");
         }
         try {
@@ -34,9 +33,9 @@ public class Knopf extends Heizungsobjekt {
 
         } catch (NumberFormatException test) {
             Logger.ErrorLog(Knopf, "Knopfdruck lese Fehler");
-            
+
         }
-        if (k == 1) {
+        if (k % 2 == 1) {
             KnopfAn = true;
             return true;
         } else {
@@ -47,6 +46,15 @@ public class Knopf extends Heizungsobjekt {
 
     public static boolean getKnopfAn() {
         return KnopfAn;
+    }
+
+    public static void KnopfDruecken() {
+        try {
+            Process p = Runtime.getRuntime().exec("python " + INI.getGUISchalterPath());
+        } catch (IOException ex) {
+            Logger.ErrorLog("Knopf", "GUISchalterPath.py fehlt");
+        }
+
     }
 
 }

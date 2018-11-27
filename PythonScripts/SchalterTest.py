@@ -5,28 +5,19 @@ GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(24, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
-i = True
 t =1
 
 def button_callback(channel):
-    global i
     global t
     filepath = "/home/pi/NetBeansProjects/LUMA/PythonScripts/KnopfDruck.txt"
     if GPIO.input(24) == 1:
-        if i:
-            f = open(filepath , "w")
-            f.write("1")
+            f = open(filepath , "r")
+            i = int(f.read()) + 1
             f.close()
-            i = False
-            print(i)
-            time.sleep(t)
-            
-        elif not i:
-            f = open(filepath , "w")
-            f.write("0")
-            f.close()
-            i = True
-            print (i)
+            print i
+            g = open(filepath , "w")
+            g.write(str(i))
+            g.close()
             time.sleep(t)
     else:
         print("7")
