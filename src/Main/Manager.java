@@ -4,11 +4,12 @@ import Heizungsobjekt.*;
 
 public class Manager {
 
-    Termometer HauptTermo = new Termometer("28-05170013b3ff", "HauptTermo");
-    Termometer ZweitTermo = new Termometer("28-04170077ffff", "ZweitTermo");
+    Termometer HauptTermo = new Termometer("28-04170077ffff", "HauptTermo");
+    Termometer ZweitTermo = new Termometer("28-0517003d18ff", "ZweitTermo");
     Termometer DrittTermo = new Termometer("28-051700323fff", "DrittTermo");
     Termometer ViertTermo = new Termometer("28-0316a7b69fff", "ViertTermo");
-    Termometer FuenftTermo = new Termometer("28-0517003d18ff", "FuenftTermo");
+    Termometer FuenftTermo = new Termometer("28-05170013b3ff", "Defekt");
+    
 
     Termometer[] AlleTermo = {HauptTermo, ZweitTermo, DrittTermo, ViertTermo, FuenftTermo};
 
