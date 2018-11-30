@@ -34,11 +34,7 @@ public class Pumpe extends Heizungsobjekt {
             GUI.Uebersicht.PumpeAnUI(0);
         } else {
             Logger.log(2, "Pumpe", "AngeschaltetKnopf");
-            try {
-                Process p = Runtime.getRuntime().exec("python " + INI.getKnopfLampeAnPath());
-            } catch (IOException ex) {
-                Logger.ErrorLog("Pumpe", "KnopfLampeAn.py fehlt");
-            }
+            ZwangsLED.anschalten();
             GUI.Uebersicht.PumpeAnUI(1);
         }
     }
@@ -56,11 +52,7 @@ public class Pumpe extends Heizungsobjekt {
             Logger.log(2, "Pumpe", "Ausgeschaltet");
         } else {
             Logger.log(2, "Pumpe", "AusgeschaltetKnopf");
-            try {
-                Process p = Runtime.getRuntime().exec("python " + INI.getKnopfLampeAusPath());
-            } catch (IOException ex) {
-                Logger.ErrorLog("Pumpe", "KnopfLampeAus.py fehlt");
-            }
+            ZwangsLED.ausschalten();
         }
     }
 }

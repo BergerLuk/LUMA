@@ -19,7 +19,9 @@ import javax.swing.*;
  * @author root
  */
 public class Uebersicht extends javax.swing.JFrame {
-
+    
+    private static JPanel jPanel1 = new JPanel();
+    private static JTextField jTextField1 = new JTextField();
     private static JTextField jTextField2 = new JTextField();
     private static JTextField jTextField3 = new JTextField();
     private static JTextField jTextField4 = new JTextField();
@@ -44,9 +46,6 @@ public class Uebersicht extends javax.swing.JFrame {
         getContentPane().removeAll();
 
         setTitle("LUMA");
-
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.FlowLayout());
@@ -85,20 +84,8 @@ public class Uebersicht extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jScrollBar1 = new javax.swing.JScrollBar();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.FlowLayout());
-
-        jPanel1.setLayout(new java.awt.GridLayout());
-
-        jTextField1.setText("jTextField1");
-        jPanel1.add(jTextField1);
-
-        getContentPane().add(jPanel1);
-        getContentPane().add(jScrollBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -192,14 +179,11 @@ public class Uebersicht extends javax.swing.JFrame {
         
         @Override
         public void actionPerformed(ActionEvent e) {
-            M.ManagerTermo();
+            M.TempCheck();
         }
     }
     TempCheck TempCheck = new TempCheck();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private static javax.swing.JPanel jPanel1;
-    private static javax.swing.JScrollBar jScrollBar1;
-    private static javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

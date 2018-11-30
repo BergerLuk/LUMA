@@ -9,7 +9,6 @@ public class Manager {
     Termometer DrittTermo = new Termometer("28-051700323fff", "DrittTermo");
     Termometer ViertTermo = new Termometer("28-0316a7b69fff", "ViertTermo");
     Termometer FuenftTermo = new Termometer("28-05170013b3ff", "Defekt");
-    
 
     Termometer[] AlleTermo = {HauptTermo, ZweitTermo, DrittTermo, ViertTermo, FuenftTermo};
 
@@ -20,12 +19,14 @@ public class Manager {
         INI.initINI();
 
         while (true) {
+            //Regelbetrieb
             if (!Knopf.getKnopfAn()) {
                 if (i % INI.getSleep() == 0) {
                     ManagerTermo();
                 }
                 KnopfAnTest();
-            } else if (Knopf.getKnopfAn()) {
+                //Zwangsbetrieb
+            } else {
                 if (i % INI.getSleep() == 0) {
                     Logger.log(1, "Pumpe", String.valueOf(Pumpe.getIstAn()));
                     LogTermo();
@@ -40,11 +41,21 @@ public class Manager {
             i++;
         }
     }
-    public void ManagerTermo() {
-                    PumpeAnschaltTest();
-                    PumpeAusschaltTest();
-                    Logger.log(1, "Pumpe", String.valueOf(Pumpe.getIstAn()));
-                    LogTermo();
+
+    private void ManagerTermo() {
+        PumpeAnschaltTest();
+        PumpeAusschaltTest();
+        Logger.log(1, "Pumpe", String.valueOf(Pumpe.getIstAn()));
+        LogTermo();
+    }
+
+    public void TempCheck() {
+        Logger.log(1, "Pumpe", String.valueOf(Pumpe.getIstAn()));
+        LogTermo();
+        if (!Knopf.getKnopfAn()) {
+            PumpeAnschaltTest();
+            PumpeAusschaltTest();
+        }
     }
 
     private void LogTermo() {
@@ -67,17 +78,24 @@ public class Manager {
         }
     }
 
-    private static void KnopfAnTest() {
+    private void KnopfAnTest() {
         if (Knopf.Knopfan()) {
             Pumpe.anschalten(1);
             System.out.println("Knopf Pumpe an");
         }
     }
 
-    private static void KnopfAusTest() {
+    private void KnopfAusTest() {
         if (!Knopf.Knopfan()) {
-            Pumpe.ausschalten(1);
-            System.out.println("Knopf Pumpe aus");
+            if (HauptTermo.getTemperatur() >= INI.getAusTemp()) {
+                ZwangsLED.ausschalten();
+                GUI.Uebersicht.PumpeAnUI(0);
+                Logger.log(2, "Zwangsmodus", "Ausgeschaltet");
+            }
+            else {
+                Pumpe.ausschalten(1);
+                System.out.println("Knopf Pumpe aus");
+            }
         }
     }
 }
