@@ -4,18 +4,22 @@
  * and open the template in the editor.
  */
 package GUI;
+
 import Main.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.logging.Level;
 import javax.swing.*;
+
 /**
  *
  * @author root
  */
 public class Uebersicht extends javax.swing.JFrame {
-    
+
     private static JTextField jTextField2 = new JTextField();
     private static JTextField jTextField3 = new JTextField();
     private static JTextField jTextField4 = new JTextField();
@@ -25,24 +29,26 @@ public class Uebersicht extends javax.swing.JFrame {
     private static JTextField jTextField8 = new JTextField();
     private static JTextField jTextField9 = new JTextField();
     private static JTextField jTextField10 = new JTextField();
-    static JTextField[] Log = {jTextField2,jTextField3,jTextField4,jTextField5,jTextField6,jTextField7,jTextField8,jTextField9,jTextField10};
+    static JTextField[] Log = {jTextField2, jTextField3, jTextField4, jTextField5, jTextField6, jTextField7, jTextField8, jTextField9, jTextField10};
     public static boolean istda = false;
     private static JButton AnAusKnopf = new JButton();
+    private static JButton TempChecker = new JButton();
+    static Manager M = new Manager();
 
     /**
      * Creates new form Uebersicht
      */
     public Uebersicht() {
         initComponents();
-        
+
         getContentPane().removeAll();
-        
+
         setTitle("LUMA");
-        
+
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.FlowLayout());
 
         jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));
@@ -54,17 +60,20 @@ public class Uebersicht extends javax.swing.JFrame {
         jPanel1.add(jTextField1);
         AnAusKnopf.setText("An/Aus Knopf");
         AnAusKnopf.addActionListener(UK);
-        
+        TempChecker.setText("Temperatur überprüfen");
+        TempChecker.addActionListener(TempCheck);
+
         for (JTextField i : Log) {
             jPanel1.add(i);
         }
         getContentPane().add(jPanel1);
         getContentPane().add(AnAusKnopf);
+        getContentPane().add(TempChecker);
 
         pack();
-        
+
         istda = true;
-        
+
     }
 
     /**
@@ -127,38 +136,66 @@ public class Uebersicht extends javax.swing.JFrame {
                 new Uebersicht().setVisible(true);
             }
         });
-        Manager M = new Manager();
+        ExitCmd();
         M.Steuerung();
     }
-    
-    public static void PumpeAnUI (int i) {
-        if (i == 0)
+
+    public static void PumpeAnUI(int i) {
+        if (i == 0) {
             jTextField1.setText("Pumpe ist An   ");
-        else
+        } else {
             jTextField1.setText("Pumpe ist An (Knopf)");
+        }
         jTextField1.setBackground(Color.green);
     }
-    public static void PumpeAusUI () {
+
+    public static void PumpeAusUI() {
 
         jTextField1.setText("Pumpe ist Aus  ");
         jTextField1.setBackground(Color.red);
     }
-    public static void newLog (String newLog) {
+
+    public static void newLog(String newLog) {
         for (javax.swing.JTextField i : Log) {
             String oldText = i.getText();
             i.setText(newLog);
             newLog = oldText;
         }
-        
+
     }
-    
+
+    private static void ExitCmd() {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+
+                try {
+                    Process p = Runtime.getRuntime().exec("pkill -f SchalterTest.py");
+                } catch (IOException ex) {
+                    java.util.logging.Logger.getLogger(Uebersicht.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println("Ende");
+
+            }
+        });
+    }
+
     private class UIKnopf implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             Heizungsobjekt.Knopf.KnopfDruecken();
         }
     }
     UIKnopf UK = new UIKnopf();
+    
+    private class TempCheck implements ActionListener {
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            M.ManagerTermo();
+        }
+    }
+    TempCheck TempCheck = new TempCheck();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JPanel jPanel1;

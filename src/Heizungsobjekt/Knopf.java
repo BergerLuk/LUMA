@@ -17,7 +17,7 @@ public class Knopf extends Heizungsobjekt {
     private static boolean KnopfAn = false;
 
     public static boolean Knopfan() {
-        int k = 0;
+        long k = 0;
         String Knopf = "0";
         try {
             FileReader fr = new FileReader(INI.getKnopfDruckPath());
@@ -29,7 +29,7 @@ public class Knopf extends Heizungsobjekt {
             Logger.ErrorLog("Knopf", "KnopfDruck.txt fehlt");
         }
         try {
-            k = Integer.valueOf(Knopf);
+            k = Long.valueOf(Knopf);
 
         } catch (NumberFormatException test) {
             Logger.ErrorLog(Knopf, "Knopfdruck lese Fehler");

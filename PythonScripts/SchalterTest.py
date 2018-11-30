@@ -1,5 +1,8 @@
+#!/usr/bin/env python
+
 import RPi.GPIO as GPIO
 import time
+import signal
 
 GPIO.setmode(GPIO.BCM)
 
@@ -26,6 +29,6 @@ def button_callback(channel):
 
 GPIO.add_event_detect(24,GPIO.BOTH,callback=button_callback, bouncetime=300)  
 
-input("Press enter to quit \n\n")
+signal.pause()
 
 GPIO.cleanup()

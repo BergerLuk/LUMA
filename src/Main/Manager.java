@@ -7,8 +7,8 @@ public class Manager {
     Termometer HauptTermo = new Termometer("28-05170013b3ff", "HauptTermo");
     Termometer ZweitTermo = new Termometer("28-04170077ffff", "ZweitTermo");
     Termometer DrittTermo = new Termometer("28-051700323fff", "DrittTermo");
-    Termometer ViertTermo = new Termometer("28-04170077ffff", "ViertTermo");
-    Termometer FuenftTermo = new Termometer("28-04170077ffff", "FuenftTermo");
+    Termometer ViertTermo = new Termometer("28-0316a7b69fff", "ViertTermo");
+    Termometer FuenftTermo = new Termometer("28-0517003d18ff", "FuenftTermo");
 
     Termometer[] AlleTermo = {HauptTermo, ZweitTermo, DrittTermo, ViertTermo, FuenftTermo};
 
@@ -21,10 +21,7 @@ public class Manager {
         while (true) {
             if (!Knopf.getKnopfAn()) {
                 if (i % INI.getSleep() == 0) {
-                    PumpeAnschaltTest();
-                    PumpeAusschaltTest();
-                    Logger.log(1, "Pumpe", String.valueOf(Pumpe.getIstAn()));
-                    LogTermo();
+                    ManagerTermo();
                 }
                 KnopfAnTest();
             } else if (Knopf.getKnopfAn()) {
@@ -41,6 +38,12 @@ public class Manager {
             }
             i++;
         }
+    }
+    public void ManagerTermo() {
+                    PumpeAnschaltTest();
+                    PumpeAusschaltTest();
+                    Logger.log(1, "Pumpe", String.valueOf(Pumpe.getIstAn()));
+                    LogTermo();
     }
 
     private void LogTermo() {

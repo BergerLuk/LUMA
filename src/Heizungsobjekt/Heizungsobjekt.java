@@ -7,6 +7,7 @@ package Heizungsobjekt;
 
 import Main.*;
 import java.io.IOException;
+import java.util.logging.Level;
 
 /**
  *
@@ -23,6 +24,10 @@ public class Heizungsobjekt {
             Logger.ErrorLog("Heizungsobjekte", "SchalterReset.py fehlt");
         }
         System.out.println("Reset Knopf");
-        //Process p = Runtime.getRuntime().exec("python /home/pi/NetBeansProjects/LUMA/PythonScripts/SchalterTest.py");
+        try {
+            Process p = Runtime.getRuntime().exec("python /home/pi/NetBeansProjects/LUMA/PythonScripts/SchalterTest.py");
+        } catch (IOException ex) {
+            Logger.ErrorLog("Knopf", "SchalterTest.py fehlt");
+        }
     }
 }
