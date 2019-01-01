@@ -63,7 +63,7 @@ public class Manager {
         int a = 1;
         for (Termometer i : AlleTermo) {
             Logger.log(1, i.toString(), String.valueOf(i.getTemperatur()));
-            GUILog = GUILog + a + " = " + String.valueOf(i.getTemperatur()) + " // ";
+            GUILog = GUILog + a + " = " + String.valueOf(i.getTemperatur()) + "°C // ";
             a++;
         }
         GUI.Uebersicht.newLog(GUILog);
