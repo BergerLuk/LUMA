@@ -9,7 +9,7 @@ public class INI {
     private static int AnschaltTemperatur = 65;
     private static int AusschaltTemperatur = 60;
     private static int log = 2;
-    private static String LogPath = "/home/pi/Documents/LUMA/log.xls";
+    private static String LogPath = "/home/pi/Documents/LUMA/Log";
     private static long Sleep = 600000;
     private static String PumpeInit = SkriptPath + "SchalterReset.py";
     private static String TermoPath = "/sys/bus/w1/devices/";

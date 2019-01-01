@@ -10,11 +10,13 @@ public class Logger {
 
     static SimpleDateFormat date = new SimpleDateFormat("yyyy.MM.dd;HH:mm");
     static String uhrzeit = date.format(new Date());
+    static String LogPath = INI.getLogPath();
 
     public static void log(int i, String Gerät, String Status) {
         date = new SimpleDateFormat("yyyy.MM.dd;HH:mm");
         uhrzeit = date.format(new Date());
         BufferedWriter writer = null;
+        String timeLog = LogPath + "/" + DateTime.getyear() + "/"
         try {
             writer = new BufferedWriter(new FileWriter(INI.getLogPath(), true));
             if ((i == 0)) {
