@@ -21,7 +21,16 @@ public class Logger {
         date = new SimpleDateFormat("yyyy.MM.dd;HH:mm");
         uhrzeit = date.format(new Date());
         BufferedWriter writer = null;
-        String timeLog = LogPath + Year + "/" + Month + "/" + Day;
+        String timeLog = LogPath + Year + "/" + Month + "/" + Day + ".xls";
+        File f = new File(timeLog);
+        if (!f.exists()) {
+            f.getParentFile().mkdirs();
+            try {
+                f.createNewFile();
+            } catch (IOException ex) {
+                Logger.ErrorLog("Logger","LogFile could not be created" + ex);
+            }
+        }
         
         
         try {
