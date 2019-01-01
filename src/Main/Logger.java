@@ -30,7 +30,7 @@ public class Logger {
                 writer.append("\nNew Log\nStatus;Datum;Uhrzeit;Einheit;Daten;\n");
             } else if (INI.getLogPrio() <= i) {
                 writer.append("LOG; " + uhrzeit + ";" + Gerät + ";" + Status + ";\n");
-                GUI.Uebersicht.newLog("LOG; " + uhrzeit + ";" + Gerät + ";" + Status + ";\n");
+                //GUI.Uebersicht.newLog("LOG; " + uhrzeit + ";" + Gerät + ";" + Status + ";\n");
             }
             writer.close();
         } catch (IOException ex) {
