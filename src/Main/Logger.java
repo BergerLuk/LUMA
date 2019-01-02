@@ -18,6 +18,10 @@ public class Logger {
     static String Day = String.valueOf(currentDate.getDayOfMonth());
 
     public static void log(int i, String Gerät, String Status) {
+        currentDate = LocalDate.now();
+        Year = String.valueOf(currentDate.getYear());
+        Month = currentDate.getMonth().name();
+        Day = String.valueOf(currentDate.getDayOfMonth());
         date = new SimpleDateFormat("yyyy.MM.dd;HH:mm");
         uhrzeit = date.format(new Date());
         BufferedWriter writer = null;
