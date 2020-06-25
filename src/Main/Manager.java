@@ -19,6 +19,19 @@ public class Manager {
         INI.initINI();
 
         while (true) {
+            //Routine anschaltung
+            if (!Pumpe.getIstAn() && System.currentTimeMillis() % 86400000 == 0) {
+                Pumpe.anschalten(2);
+                System.out.println("Routine Pumpe an");
+                try {
+                    Thread.sleep(300000);
+                } catch (InterruptedException ex) {
+                    Logger.ErrorLog("Manager", "sleep failed");
+                }
+                Pumpe.ausschalten(2);
+                System.out.println("Routine Pumpe aus");
+            }
+
             //Regelbetrieb
             if (!Knopf.getKnopfAn()) {
                 if (i % INI.getSleep() == 0) {
@@ -96,8 +109,7 @@ public class Manager {
                 ZwangsLED.ausschalten();
                 GUI.Uebersicht.PumpeAnUI(0);
                 Logger.log(2, "Zwangsmodus", "Ausgeschaltet");
-            }
-            else {
+            } else {
                 Pumpe.ausschalten(1);
                 System.out.println("Knopf Pumpe aus");
             }

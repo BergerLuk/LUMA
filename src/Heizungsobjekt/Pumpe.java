@@ -32,10 +32,13 @@ public class Pumpe extends Heizungsobjekt {
         if (i == 0) {
             Logger.log(2, "Pumpe", "Angeschaltet");
             GUI.Uebersicht.PumpeAnUI(0);
-        } else {
+        } else if (i == 1) {
             Logger.log(2, "Pumpe", "AngeschaltetKnopf");
             ZwangsLED.anschalten();
             GUI.Uebersicht.PumpeAnUI(1);
+        } else {
+            Logger.log(2, "Pumpe", "AngeschaltetRoutine");
+            GUI.Uebersicht.PumpeAnUI(0);
         }
     }
 
@@ -50,9 +53,11 @@ public class Pumpe extends Heizungsobjekt {
 
         if (i == 0) {
             Logger.log(2, "Pumpe", "Ausgeschaltet");
-        } else {
+        } else if (i==1) {
             Logger.log(2, "Pumpe", "AusgeschaltetKnopf");
             ZwangsLED.ausschalten();
+        } else {
+            Logger.log(2, "Pumpe", "AsugeschaltetRoutine");
         }
     }
 }
