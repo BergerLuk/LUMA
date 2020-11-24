@@ -24,19 +24,19 @@ public class INI {
         try {
             Properties p = new Properties();
             p.load(new FileInputStream("/home/pi/Documents/LUMA/LUMA.ini"));
-            AnschaltTemperatur = Integer.parseInt(p.getProperty("AnTemp"));
-            AusschaltTemperatur = Integer.parseInt(p.getProperty("AusTemp"));
-            log = Integer.parseInt(p.getProperty("LogLevel"));
-            LogPath = p.getProperty("LogPath");
-            Sleep = Long.parseLong(p.getProperty("Sleep")) * 1000;
-            PumpeInit = p.getProperty("PumpeInit");
-            TermoPath = p.getProperty("ThermoPath");
-            PumpeAusPath = p.getProperty("PumpeAusPath");
-            PumpeAnPath = p.getProperty("PumpeAnPath");
-            KnopfDruckPath = p.getProperty("KnopfDruckPath");
-            KnopfLampeAusPath = p.getProperty("KnopfLampeAusPath");
-            KnopfLampeAnPath = p.getProperty("KnopfLampeAnPath");
-            GUISchalterPath = p.getProperty("GUISchalterPath");
+            AnschaltTemperatur = Integer.parseInt(p.getProperty("AnTemp","65"));
+            AusschaltTemperatur = Integer.parseInt(p.getProperty("AusTemp","60"));
+            log = Integer.parseInt(p.getProperty("LogLevel","2"));
+            LogPath = p.getProperty("LogPath","/home/pi/Documents/LUMA/Log/");
+            Sleep = Long.parseLong(p.getProperty("Sleep","30")) * 1000;
+            PumpeInit = SkriptPath + p.getProperty("PumpeInit","SchalterReset.py");
+            TermoPath = SkriptPath + p.getProperty("ThermoPath","/sys/bus/w1/devices/");
+            PumpeAusPath = SkriptPath +p.getProperty("PumpeAusPath","Aus.py");
+            PumpeAnPath =  SkriptPath + p.getProperty("PumpeAnPath","An.py");
+            KnopfDruckPath = SkriptPath + p.getProperty("KnopfDruckPath","KnopfDruck.txt");
+            KnopfLampeAusPath = SkriptPath + p.getProperty("KnopfLampeAusPath","KnopfLampeAus.py");
+            KnopfLampeAnPath = SkriptPath + p.getProperty("KnopfLampeAnPath","KnopfLampeAn.py);
+            GUISchalterPath = SkriptPath + p.getProperty("GUISchalterPath","GUISchalter.py");
         } catch (IOException ex) {
             Logger.ErrorLog("INI", "INI-Datei fehlt");
         }
